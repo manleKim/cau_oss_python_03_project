@@ -13,7 +13,8 @@ def start_process(path):
     select 값에 따라 다양한 process를 시행하는 함수
     
     select == 1: print_spot 함수를 호출한다.
-    select == 2: not implements yet
+    select == 2: filter 기능. 본인이 필터하고 싶은 항목에 따라 번호를 입력.
+                fitering하고 싶은 단어를 입력하면 filter된 데이터들을 출력한다.
     select == 3: not implements yet
     select == 4: "Exit"을 출력하고 menu 선택 반복을 종료한다.
     
@@ -40,29 +41,30 @@ def start_process(path):
             print("[4] ptype")
             print("[5] location")
             select = int(input('type:'))
-            if select == 1:
+            if select == 1: # fiter_by_name
                 keyword = input('type name:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 2:
+                spots = parking_spot_manager.filter_by_name(spots, keyword)
+
+            elif select == 2: # fiter_by_city
                 keyword = input('type city:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 3:
+                spots = parking_spot_manager.filter_by_city(spots, keyword)
+
+            elif select == 3: # fiter_by_district
                 keyword = input('type district:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 4:
+                spots = parking_spot_manager.filter_by_district(spots, keyword)
+
+            elif select == 4: # fiter_by_ptype
                 keyword = input('type ptype:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 5:
+                spots = parking_spot_manager.filter_by_ptype(spots, keyword)
+
+            elif select == 5: # fiter_by_locations
                 min_lat = float(input('type min lat:'))
                 max_lat = float(input('type max lat:'))
                 min_lon = float(input('type min long:'))
                 max_lon = float(input('type max long:'))
-                print("not implemented yet")
-                # fill this block
+                locations = (min_lat, max_lat, min_lon, max_lon)
+                spots = parking_spot_manager.filter_by_location(spots, locations)
+
             else:
                 print("invalid input")
         elif select == 3:
@@ -79,3 +81,4 @@ def start_process(path):
             break
         else:
             print("invalid input")
+            
