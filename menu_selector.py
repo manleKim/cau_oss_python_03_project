@@ -15,7 +15,9 @@ def start_process(path):
     select == 1: print_spot 함수를 호출한다.
     select == 2: filter 기능. 본인이 필터하고 싶은 항목에 따라 번호를 입력.
                 fitering하고 싶은 단어를 입력하면 filter된 데이터들을 출력한다.
-    select == 3: not implements yet
+    select == 3: 필터를 할 기준의 키[keyword]를 문자열로 입력.
+                keyword가 지원하는 목록에 없다면 "invalid input"을 출력하며, 지원하는 경우 parking_spot_manager 모듈의
+                sort_by_keyword 함수를 호출하여 정렬된 데이터들을 출력한다.
     select == 4: "Exit"을 출력하고 menu 선택 반복을 종료한다.
     
     Args:
@@ -73,8 +75,7 @@ def start_process(path):
             print(keywords)
             keyword = input('type keyword:')
             if keyword in keywords:
-                print("not implemented yet")
-                # fill this block
+                spots =  parking_spot_manager.sort_by_keyword(spots, keyword)
             else: print("invalid input")
         elif select == 4:
             print("Exit")
